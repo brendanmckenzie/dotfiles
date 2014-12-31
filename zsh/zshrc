@@ -85,3 +85,5 @@ source /usr/local/bin/virtualenvwrapper_lazy.sh
 source ~/.ssh-agent.sh
 
 export PYTHONDONTWRITEBYTECODE=true
+
+export TERM=screen-256color
