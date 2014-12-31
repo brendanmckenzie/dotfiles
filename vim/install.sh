@@ -1,2 +1,2 @@
 mv ~/.vimrc ~/vimrc.bak
-ln -s vimrc ~/.vimrc
+ln -s $PWD/vimrc ~/.vimrc
