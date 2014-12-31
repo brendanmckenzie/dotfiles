@@ -1,23 +1,121 @@
 execute pathogen#infect()
+
+" Vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+set backupdir=~/.vim/backup,/tmp
+set directory=~/.vim/backup,/tmp
+
+set nocompatible
+filetype off
+
+" ** required
+Bundle 'gmarik/vundle'
+
+Bundle "lepture/vim-jinja"
+Bundle "Lokaltog/vim-easymotion"
+Bundle 'groenewege/vim-less'
+Bundle 'stephenmckinney/vim-solarized-powerline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle "kien/ctrlp.vim.git"
+Bundle "scrooloose/syntastic.git"
+Bundle "vim-scripts/closetag.vim"
+
+set nowrap
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set number
+
+" set background=light
+" colorscheme solarized
 syntax on
 filetype plugin indent on
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set smarttab
-set expandtab
+" disable arrow keys for navigation
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-map \l :setlocal number!<CR>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+set list listchars=tab:\ \ ,trail:-
+
+" navigate splits with with arrow keys
+nnoremap <right> <c-w>l
+nnoremap <left> <c-w>h
+nnoremap <up> <c-w>k
+nnoremap <down> <c-w>j
+
+
+" split-it mapping
+nmap <leader>-  :new<cr>
+nmap <leader>\|  :vnew<cr>
+nmap <leader>\  :rightbelow vnew<cr>
+nmap <leader>_  :rightbelow new<cr>
+
+" split-it resizing with shift+arrow
+nmap <silent> <s-down> :resize -5<cr>
+nmap <silent> <s-up> :resize +5<cr>
+nmap <silent> <s-left> :vertical resize -5<cr>
+nmap <silent> <s-right> :vertical resize +5<cr>
+
+map <leader><leader> <c-w>o
+map <leader><leader><leader> :exit<cr>
+
+set backspace=indent,eol,start
+
+
+" plugins
+
+map <leader>n :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeQuitOnOpen = 1
+
+" easymotion
+let g:EasyMotion_leader_key = ','
+
+" powerline
+set laststatus=2
+set encoding=utf-8
+
+au filetype sql,coffee,html,htmldjango,jade,less,stylus,json,htmljinja2 set shiftwidth=2 softtabstop=2 tabstop=2 textwidth=239
+au filetype html,jinja set shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
+au BufNewFile,BufRead *.sql setf pgsql
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" go
+filetype off
+filetype plugin indent off
+set runtimepath+=/usr/local/go/misc/vim
+filetype plugin indent on
+
+if has("gui_running")
+  set background=dark
+  colorscheme solarized
+  set guifont=Source_Code_Pro_for_Powerline:h10
+endif
+
+" mappings
+nmap \l :setlocal number!<CR>
 nmap \o :set paste!<CR>
+nmap \Q :q<CR>
 
+" inc search
 set incsearch
 set ignorecase
 set smartcase
 set hlsearch
 nmap \q :nohlsearch<CR>
 
+" ctrl-p
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
@@ -25,6 +123,3 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-
-nmap \e :NERDTreeToggle<CR>
-
