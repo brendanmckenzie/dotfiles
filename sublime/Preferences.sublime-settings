@@ -1,5 +1,4 @@
 {
-	"auto_complete": false,
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/Stereokai (SL).tmTheme",
 	"draw_white_space": "all",
@@ -30,16 +29,11 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Anaconda"
+		"Anaconda",
+		"Vintage"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
-	"rulers":
-	[
-		72,
-		79
-	],
 	"scroll_past_end": false,
 	"show_full_path": true,
 	"show_minimap": false,
