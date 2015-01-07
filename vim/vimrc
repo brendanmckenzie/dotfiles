@@ -22,6 +22,7 @@ Bundle "Lokaltog/vim-easymotion"
 Bundle "kien/ctrlp.vim.git"
 Bundle "scrooloose/syntastic.git"
 Bundle "vim-scripts/closetag.vim"
+Bundle 'wakatime/vim-wakatime'
 
 ""
 " Global config
