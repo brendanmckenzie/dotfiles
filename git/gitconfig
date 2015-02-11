@@ -1,13 +1,23 @@
 [push]
     default = simple
+
 [core]
     editor = vim
+
 [user]
     name = Brendan McKenzie
     email = hello@brendanmckenzie.com
+
 [filter "media"]
     clean = git-media-clean %f
     smudge = git-media-smudge %f
+
+[diff]
+    tool = vimdiff
+
+[merge]
+    tool = vimdiff
+
 [alias]
     co = checkout
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -16,7 +26,5 @@
     s = status
     l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     d = diff
-[diff]
-    tool = vimdiff
-[merge]
-    tool = vimdiff
+    cf = diff-tree --no-commit-id --name-status -r
+    cc = branch --contains
